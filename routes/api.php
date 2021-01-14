@@ -20,8 +20,8 @@ use Illuminate\Support\Facades\Route;
 //Route::middleware('auth:api')->get('/user', function (Request $request) {
 //    return $request->user();
 //});
-Route::prefix('/{$user_id}')->group(function () {
-    Route::get('', [ProjectController::class, 'show']);
+//Route::prefix('/{$user_id}')->group(function () {
+//    Route::get('', [ProjectController::class, 'show']);
     Route::prefix('/projects')->group(function () {
         Route::get('/', [ProjectController::class, 'index']);
         Route::post('/', [ProjectController::class, 'store']);
@@ -46,7 +46,7 @@ Route::prefix('/{$user_id}')->group(function () {
 //            });
 //        });
     });
-});
+//});
 
 Route::post('/authorization', [UserController::class, 'auth']);
 Route::post('/registration', [UserController::class, 'store']);
