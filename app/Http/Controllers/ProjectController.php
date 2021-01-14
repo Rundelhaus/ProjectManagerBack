@@ -70,7 +70,8 @@ class ProjectController extends Controller
 
         $data = [];
         foreach ($projects_id as $proj_id){
-            array_push($data, [ ProjectController::show($proj_id), 'tasks' => TaskController::show_out($proj_id) ]);
+            array_push($data, ProjectController::show($proj_id));
+            array_push($data, [ 'tasks' => TaskController::show_out($proj_id) ]);
         }
 
         return response()->json($data)->setStatusCode(200, 'Successful extraction');
