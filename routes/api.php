@@ -17,8 +17,8 @@ use Illuminate\Support\Facades\Route;
 //Route::middleware('auth:api')->get('/user', function (Request $request) {
 //    return $request->user();
 //});
-Route::prefix('/{$user_id}')->group(function () {
-    Route::get('/', 'ProjectController@show');
+//Route::prefix('/{$user_id}')->group(function () {
+    //Route::get('/', 'ProjectController@show');
     Route::prefix('/projects')->group(function () {
         Route::get('','ProjectController@showOne');
         Route::post('/', 'ProjectController@store');
@@ -43,7 +43,7 @@ Route::prefix('/{$user_id}')->group(function () {
             });
         });
     });
-});
+//});
 
 Route::post('/authorization', 'UserController@auth');
 Route::post('/registration', 'UserController@store');
