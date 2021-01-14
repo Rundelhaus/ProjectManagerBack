@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\TaskController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,30 +22,30 @@ use Illuminate\Support\Facades\Route;
 //Route::prefix('/{$user_id}')->group(function () {
     //Route::get('/', 'ProjectController@show');
     Route::prefix('/projects')->group(function () {
-        Route::get('','ProjectController@showOne');
-        Route::post('/', 'ProjectController@store');
+        Route::get('/', [ProjectController::class, 'index']);
+        Route::post('/', [ProjectController::class, 'store']);
         Route::prefix('/{project}')->group(function () {
-            Route::get('', 'ProjectController@show');
-            Route::patch('/', 'ProjectController@update');
-            Route::delete('/', 'ProjectController@destroy');
+            Route::get('', [ProjectController::class, 'show']);
+            Route::patch('/', [ProjectController::class, 'update']);
+            Route::delete('/', [ProjectController::class, 'destroy']);
         });
-        Route::prefix('/tasks/{task}')->group(function () {
-            Route::get('', 'TaskController@show');
-            Route::patch('/', 'TaskController@update');
-            Route::delete('/', 'TaskController@destroy');
-            Route::prefix('/subtasks/{subtask}')->group(function () {
-                Route::get('', 'SubtaskController@show');
-                Route::patch('/', 'SubtaskController@update');
-                Route::delete('/', 'SubtaskController@destroy');
-                Route::prefix('/attachments/{attachment}')->group(function () {
-                    Route::get('', 'AttachmentController@show');
-                    Route::patch('/', 'AttachmentController@update');
-                    Route::delete('/', 'AttachmentController@destroy');
-                });
-            });
-        });
+//        Route::prefix('/tasks/{task}')->group(function () {
+//            Route::get('', [TaskController::class, 'show']);
+//            Route::patch('/', 'TaskController@update');
+//            Route::delete('/', 'TaskController@destroy');
+//            Route::prefix('/subtasks/{subtask}')->group(function () {
+//                Route::get('', 'SubtaskController@show');
+//                Route::patch('/', 'SubtaskController@update');
+//                Route::delete('/', 'SubtaskController@destroy');
+//                Route::prefix('/attachments/{attachment}')->group(function () {
+//                    Route::get('', 'AttachmentController@show');
+//                    Route::patch('/', 'AttachmentController@update');
+//                    Route::delete('/', 'AttachmentController@destroy');
+//                });
+//            });
+//        });
     });
 //});
 
-Route::post('/authorization', 'UserController@auth');
-Route::post('/registration', 'UserController@store');
+Route::post('/authorization', [UserController::class, 'auth']);
+Route::post('/registration', [UserController::class, 'store']);
