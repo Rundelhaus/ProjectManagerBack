@@ -36,8 +36,8 @@ use Illuminate\Support\Facades\Route;
 //    });
     Route::prefix('/tasks/{task}')->group(function () {
         Route::get('', [TaskController::class, 'show']);
-        Route::patch('/', 'TaskController@update');
-        Route::delete('/', 'TaskController@destroy');});
+        Route::patch('/', [TaskController::class, 'update']);
+        Route::delete('/', [TaskController::class, 'destroy']);});
 //            Route::prefix('/subtasks/{subtask}')->group(function () {
 //                Route::get('', 'SubtaskController@show');
 //                Route::patch('/', 'SubtaskController@update');
