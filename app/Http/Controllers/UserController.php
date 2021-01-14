@@ -26,8 +26,8 @@ class UserController extends Controller
     {
         $user = User::create([
         'name' => $request->name,
-        'email' => $request->name,
-        'password' => $request->name,
+        'email' => $request->email,
+        'password' => $request->password,
         ]);
 
         return response()->json($user)->setStatusCode(200, ' FU ');
