@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Subtask;
+use App\Models\Task;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -43,7 +44,7 @@ class SubtaskController extends Controller
             'completed' => $request->completed,
         ]);
 
-        return response()->json($task)->setStatusCode(200, 'Successful task creation');
+        return response()->json($task)->setStatusCode(200, 'Successful subtask creation');
     }
 
     /**
@@ -70,9 +71,26 @@ class SubtaskController extends Controller
      * @param  \App\Models\Subtask  $subtask
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Subtask $subtask)
+    public function update(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'task_id' => 'required|integer|exists:tasks,id',
+            'completed' => 'boolean',
+        ]);
+
+        if ($validator->fails()) {
+            return response($validator->messages(), 400);
+        }
+
+        $task = Task::find($request->id);
+        $task->update([
+            'name' => $request->name,
+            'task_id' => $request->task_id,
+            'completed' => $request->completed,
+        ]);
+
+        return response()->json($task)->setStatusCode(200, 'Successful subtask update');
     }
 
     /**

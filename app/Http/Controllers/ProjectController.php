@@ -93,9 +93,30 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string',
+            'user_id' => 'required|integer|exists:users,id',
+            'completed' => 'nullable',
+            'deadline' => 'nullable',
+            'description' => 'nullable',
+        ]);
+
+        if ($validator->fails()) {
+            return response($validator->messages(), 200);
+        }
+
+        $project = Project::find($request->id);
+        $project->update([
+            'name' => $request->name,
+            'user_id' => $request->user_id,
+            'completed' => $request->completed,
+            'deadline' => $request->deadline,
+            'description' => $request->description,
+        ]);
+
+        return response()->json($project)->setStatusCode(200, 'Successful project update');
     }
 
     /**

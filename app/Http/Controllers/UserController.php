@@ -24,14 +24,14 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {var_dump('FUCK');
+    {
         $user = User::create([
         'name' => $request->name,
         'email' => $request->email,
         'password' => $request->password,
         ]);
 
-        return response()->json($user)->setStatusCode(200, ' FU ');
+        return response()->json($user)->setStatusCode(200, ' Successful registration');
     }
 
     /**

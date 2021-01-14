@@ -80,9 +80,29 @@ class TaskController extends Controller
      * @param  \App\Models\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Task $task)
+    public function update(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'project_id' => 'required|integer|exists:projects,id',
+            'completed' => 'boolean',
+            'deadline' => 'required|date',
+        ]);
+
+        if ($validator->fails()) {
+            return response($validator->messages(), 400);
+        }
+
+        $task = Task::find($request->id);
+        $task->update([
+            'name' => $request->name,
+            'project_id' => $request->project_id,
+            'completed' => $request->completed,
+            'deadline' => $request->deadline,
+            'description' => $request->description
+        ]);
+
+        return response()->json($task)->setStatusCode(200, 'Successful task update');
     }
 
     /**

@@ -25,7 +25,12 @@ class AttachmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $attachment = Attachment::create([
+        'task_id' => $request->task_id,
+        'link' => $request->link
+        ]);
+
+        return response()->json($attachment)->setStatusCode(200, 'Successful task creation');
     }
 
     /**
@@ -34,9 +39,10 @@ class AttachmentController extends Controller
      * @param  \App\Models\Attachment  $attachment
      * @return \Illuminate\Http\Response
      */
-    public function show(Attachment $attachment)
+    public function show(Request $request)
     {
-        //
+        $attachment = Attachment::find($request->id);
+        return response()->json($attachment)->setStatusCode(200, 'Successful extraction');
     }
 
     /**
@@ -48,7 +54,13 @@ class AttachmentController extends Controller
      */
     public function update(Request $request, Attachment $attachment)
     {
-        //
+        $attachment = Attachment::find($request->id);
+        $attachment->update([
+            'task_id' => $request->task_id,
+            'link' => $request->link
+        ]);
+
+        return response()->json($attachment)->setStatusCode(200, 'Successful task creation');
     }
 
     /**
@@ -57,8 +69,11 @@ class AttachmentController extends Controller
      * @param  \App\Models\Attachment  $attachment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Attachment $attachment)
+    public function destroy(Request $request)
     {
-        //
+        $attachment = Attachment::find($request->id);
+        if($attachment->delete()) {
+            return response('Successfully deleted', 200);
+        }
     }
 }
