@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('/{$user_id}')->group(function () {
     Route::get('', [ProjectController::class, 'show']);
     Route::prefix('/projects')->group(function () {
-        Route::get('/', [ProjectController::class, 'showAll']);
+        Route::get('/', [ProjectController::class, 'index']);
         Route::post('/', [ProjectController::class, 'store']);
         Route::prefix('/{project}')->group(function () {
             Route::get('', [ProjectController::class, 'show']);
