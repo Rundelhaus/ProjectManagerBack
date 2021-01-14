@@ -60,7 +60,7 @@ class TaskController extends Controller
         return Task::find($id);
     }
 
-    public function show_out($id)
+    public static function show_out($id)
     {
         $tasks = Task::where('project_id', $id)->get();
         $tasks_id = $tasks->pluck('id');
