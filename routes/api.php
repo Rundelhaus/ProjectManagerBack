@@ -49,7 +49,7 @@ use Illuminate\Support\Facades\Route;
 //                });
 //            });
 //        });
-    });
+    //});
 //});
 
 Route::post('/authorization', [UserController::class, 'auth']);
