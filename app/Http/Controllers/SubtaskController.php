@@ -60,7 +60,7 @@ class SubtaskController extends Controller
 
     public static function show_out($id)
     {
-        $subtasks = Subtask::where('$id', $id)->get();
+        $subtasks = Subtasks::where('task_id', $id)->get();
         return $subtasks;
     }
 
