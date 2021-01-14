@@ -78,7 +78,7 @@ class ProjectController extends Controller
 
     public function showOne(Request $request)
     {
-        $project = Project::find($request->id)->get();
+        $project = Project::find($request->id);
 
         $data = TaskController::show_out($project->id);
 
