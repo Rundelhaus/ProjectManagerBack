@@ -39,7 +39,7 @@ class SubtaskController extends Controller
 
         $task = Subtask::create([
             'name' => $request->name,
-            'task_id' => $request->project_id,
+            'task_id' => $request->task_id,
             'completed' => $request->completed,
         ]);
 
