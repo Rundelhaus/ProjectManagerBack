@@ -24,6 +24,7 @@ use Illuminate\Support\Facades\Route;
 //    Route::get('', [ProjectController::class, 'show']);
     Route::prefix('/projects')->group(function () {
         Route::post('/getAll', [ProjectController::class, 'showAll']);
+        //Route::post('/get', [ProjectController::class, 'show']);
         Route::post('/', [ProjectController::class, 'store']);
     });
 
@@ -34,8 +35,9 @@ use Illuminate\Support\Facades\Route;
 //            Route::patch('/', [ProjectController::class, 'update']);
 //            Route::delete('/', [ProjectController::class, 'destroy']);
 //    });
-    Route::prefix('/tasks/{task}')->group(function () {
-        Route::post('', [TaskController::class, 'store']);
+    Route::prefix('/tasks')->group(function () {
+        Route::post('/', [TaskController::class, 'store']);
+        Route::post('/getOne', [ProjectController::class, 'getOne']);
         Route::patch('/', [TaskController::class, 'update']);
         Route::delete('/', [TaskController::class, 'destroy']);});
 //            Route::prefix('/subtasks/{subtask}')->group(function () {

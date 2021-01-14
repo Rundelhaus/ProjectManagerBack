@@ -76,9 +76,9 @@ class ProjectController extends Controller
         return response()->json($data)->setStatusCode(200, 'Successful extraction');
     }
 
-    public function showOne($user_id)
+    public function showOne(Request $request)
     {
-        $project = Project::find($user_id)->get();
+        $project = Project::find($request->id)->get();
 
         $data = TaskController::show_out($project->id);
 
