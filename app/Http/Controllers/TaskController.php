@@ -55,7 +55,7 @@ class TaskController extends Controller
      * @param  \App\Models\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public static function show($id)
     {
         return Task::find($id);
     }
