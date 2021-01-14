@@ -65,7 +65,7 @@ class ProjectController extends Controller
 
     public function showAll(Request $request)
     {
-        $projects = User::where('id', $request->id)->get();
+        $projects = Project::where('user_id', $request->id)->get();
         $projects_id = $projects->pluck('id');
 
         $data = [];

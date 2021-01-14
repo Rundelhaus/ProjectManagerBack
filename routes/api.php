@@ -34,10 +34,10 @@ use Illuminate\Support\Facades\Route;
 //            Route::patch('/', [ProjectController::class, 'update']);
 //            Route::delete('/', [ProjectController::class, 'destroy']);
 //    });
-//        Route::prefix('/tasks/{task}')->group(function () {
-//            Route::get('', [TaskController::class, 'show']);
-//            Route::patch('/', 'TaskController@update');
-//            Route::delete('/', 'TaskController@destroy');
+    Route::prefix('/tasks/{task}')->group(function () {
+        Route::get('', [TaskController::class, 'show']);
+        Route::patch('/', 'TaskController@update');
+        Route::delete('/', 'TaskController@destroy');});
 //            Route::prefix('/subtasks/{subtask}')->group(function () {
 //                Route::get('', 'SubtaskController@show');
 //                Route::patch('/', 'SubtaskController@update');
