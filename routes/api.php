@@ -25,11 +25,15 @@ use Illuminate\Support\Facades\Route;
     Route::prefix('/projects')->group(function () {
         Route::post('/getAll', [ProjectController::class, 'showAll']);
         Route::post('/', [ProjectController::class, 'store']);
-//        Route::prefix('/{project}')->group(function () {
+    });
+
+
+//    Route::prefix('/project')->group(function () {
 //            Route::get('', [ProjectController::class, 'show']);
+//        Route::post('', [ProjectController::class, 'show']);
 //            Route::patch('/', [ProjectController::class, 'update']);
 //            Route::delete('/', [ProjectController::class, 'destroy']);
-//        });
+//    });
 //        Route::prefix('/tasks/{task}')->group(function () {
 //            Route::get('', [TaskController::class, 'show']);
 //            Route::patch('/', 'TaskController@update');
