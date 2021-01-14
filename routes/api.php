@@ -41,6 +41,8 @@ use Illuminate\Support\Facades\Route;
         Route::post('/getOne', [ProjectController::class, 'showOne']);
         Route::patch('/', [TaskController::class, 'update']);
         Route::delete('/', [TaskController::class, 'destroy']);});
+
+
     Route::prefix('/subtasks')->group(function () {
         Route::post('/', [SubtaskController::class, 'store']);
         //Route::post('/{subtask}', [SubtaskController::class, 'show']);

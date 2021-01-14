@@ -81,8 +81,11 @@ class SubtaskController extends Controller
      * @param  \App\Models\Subtask  $subtask
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Subtask $subtask)
+    public function destroy(Request $request)
     {
-        //
+        $subtask = Subtask::find($request->id);
+        if($subtask->delete()) {
+            return response('Successfully deleted', 200);
+        }
     }
 }
