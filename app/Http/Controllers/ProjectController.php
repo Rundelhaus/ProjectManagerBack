@@ -57,9 +57,10 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request)
     {
-        return Project::find($id);
+        $projects = Project::where('user_id', $request->id)->get();
+        return response()->json($projects)->setStatusCode(200, 'Successful extraction');
     }
 
 
