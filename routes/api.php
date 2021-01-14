@@ -50,3 +50,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/authorization', [UserController::class, 'auth']);
 Route::post('/registration', [UserController::class, 'store']);
+//Route::post('/', [ProjectController::class, 'store']);
