@@ -67,7 +67,7 @@ class TaskController extends Controller
 
         $data = [];
         foreach ($tasks_id as $tsk_id){
-            array_push($data, [ 'task' => [TaskController::show($tsk_id)], 'subtasks' => [SubtaskController::show_out($tsk_id)] ]);
+            array_push($data, [ 'task' => TaskController::show($tsk_id), 'subtasks' => SubtaskController::show_out($tsk_id) ]);
         }
 
         return $data;
