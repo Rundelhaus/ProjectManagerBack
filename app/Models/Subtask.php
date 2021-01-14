@@ -10,7 +10,6 @@ class Subtask extends Model
     use HasFactory;
 
     protected $fillable = ['name',
-        'project_id',
-        'completed',
-        'description'];
+        'task_id',
+        'completed',];
 }

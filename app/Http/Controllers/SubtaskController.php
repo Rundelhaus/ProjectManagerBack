@@ -39,9 +39,8 @@ class SubtaskController extends Controller
 
         $task = Subtask::create([
             'name' => $request->name,
-            'project_id' => $request->project_id,
+            'task_id' => $request->project_id,
             'completed' => $request->completed,
-            'description' => $request->description
         ]);
 
         return response()->json($task)->setStatusCode(200, 'Successful task creation');
